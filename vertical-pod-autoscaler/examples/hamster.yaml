@@ -5,7 +5,7 @@
 # requests.
 # Note that the update mode is left unset, so it defaults to "Auto" mode.
 ---
-apiVersion: "autoscaling.k8s.io/v1"
+apiVersion: "autoscaling.k8s.io/v1beta2"
 kind: VerticalPodAutoscaler
 metadata:
   name: hamster-vpa
@@ -19,6 +19,8 @@ spec:
     apiVersion: "apps/v1"
     kind: Deployment
     name: hamster
+  updatePolicy:
+    updateMode: "Auto"
   resourcePolicy:
     containerPolicies:
       - containerName: '*'
